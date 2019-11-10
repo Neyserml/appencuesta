@@ -1,11 +1,12 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-
-
-const routes: Routes = [];
-
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class AppRoutingModule { }
+import { RouterModule, Routes } from "@angular/router";
+const appRoutes: Routes = [
+  {
+    path: "login",
+    loadChildren: () => import(`./login/login.module`).then(m => m.LoginModule)
+  },
+  {
+    path: "**",
+    loadChildren: () => import(`./login/login.module`).then(m => m.LoginModule)
+  }
+];
+export const APP_ROUTES = RouterModule.forRoot(appRoutes, { useHash: false });

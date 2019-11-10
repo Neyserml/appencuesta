@@ -1,0 +1,48 @@
+<section class="login-content">
+  <div class="login-box">
+    <form
+      #formControl="ngForm"
+      [formGroup]="loginForm"
+      class="login-form"
+      (ngSubmit)="auth()"
+    >
+      <h3 class="login-head">
+        Login
+      </h3>
+      <label *ngIf="message != ''" class="control-label" style="color: red;">{{
+        message
+      }}</label>
+      <div class="form-group">
+        <label class="control-label">Usuario</label>
+        <input
+          required
+          class="form-control"
+          formControlName="username"
+          type="text"
+          placeholder="usuario"
+          autofocus
+        />
+      </div>
+      <div class="form-group">
+        <label class="control-label">Contraseña</label>
+        <input
+          required
+          class="form-control"
+          formControlName="password"
+          type="password"
+          placeholder="contraseña"
+        />
+      </div>
+
+      <div class="form-group btn-container">
+        <button
+          [disabled]="!formControl.valid"
+          type="submit"
+          class="btn btn-primary btn-block"
+        >
+          <i class="fa fa-sign-in fa-lg fa-fw"></i>Ingresar
+        </button>
+      </div>
+    </form>
+  </div>
+</section>

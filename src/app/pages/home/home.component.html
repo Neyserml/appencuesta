@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Card title</h4>
+    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <p class="card-text"></p>
+  </div>
+</div>
+<div class="ribbon-wrapper card" *ngFor="let obj of data">
+  <div class="ribbon ribbon-bookmark  ribbon-default">
+    Pregunta N° {{ obj.idanswers }}
+  </div>
+  <p class="ribbon-content">
+    {{ obj.answers }}
+  </p>
+  <form action="" [formGroup]="documentForm">
+    <mat-radio-group
+      name="{{ opc.q_id }}"
+      formControlName="a_opcion"
+      (ngModelChange)="getOpcion(opc.o_id, opc.q_id)"
+      *ngFor="let opc of obj.options"
+    >
+      <mat-radio-button class="radio_b" value="{{ opc.o_id }}">{{
+        opc.o_description
+      }}</mat-radio-button
+      ><br />
+    </mat-radio-group>
+  </form>
+  <!-- <div class="form-check" *ngFor="let opc of obj.options">
+    <label class="custom-control custom-radio">
+      <input
+        name="{{ opc.q_id }}"
+        [value]="opc.o_id"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div> -->
+</div>
+<button
+  type="button"
+  (click)="save()"
+  class="btn btn-rounded btn-block btn-info"
+>
+  <i class="fa fa-check"></i> Enviar encuesta
+</button>
