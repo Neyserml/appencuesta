@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: "http://localhost:50/encuesta_services" // api para desarrollo
+  apiUrl: "http://youngvoice.dentistrymasters.com/ws_encuesta" // api para produccion
+  // apiUrl: "http://localhost:50/ws_encuesta" // api para desarrollo
 };
 
 /*

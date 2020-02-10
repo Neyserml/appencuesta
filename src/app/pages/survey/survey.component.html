@@ -1,0 +1,1933 @@
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">ENCUESTA DE YOUNG VOICE</h4>
+    <h6 class="card-subtitle mb-2 text-muted">
+      <b>
+        Esta encuesta tiene como objetivo conocer las percepciones de
+        adolescentes de 12 a 17 años de diferentes realidades de El Salvador
+        sobre el ejercicio de sus derechos, a fin de tomar en cuenta sus aportes
+        en las políticas públicas, en todos los niveles de gobierno.
+      </b>
+    </h6>
+    <p class="card-text"></p>
+  </div>
+</div>
+<div *ngIf="messageAlert" class="alert alert-warning" role="alert">
+  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Para empezar la
+  ecuesta,Ud. debe seleccionar el departamento.
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon  ribbon-info">
+    Departamento
+  </div>
+  <mat-form-field class="card-input">
+    <mat-select
+      [(ngModel)]="classdepartament"
+      placeholder="Seleccione departamento"
+      required
+      (selectionChange)="deparChange($event.value)"
+    >
+      <mat-optgroup *ngFor="let obj of arraydepa" [label]="obj.region">
+        <mat-option *ngFor="let rol of obj.departaments" [value]="rol.d_id">{{
+          rol.d_description
+        }}</mat-option>
+      </mat-optgroup>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div *ngIf="surveyhability">
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question1.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question1.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question1.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        type="radio"
+        (change)="radioChange($event, opc.q_id)"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question2.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question2.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question2.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question3.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question3.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question3.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question4.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question4.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question4.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question5.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question5.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question5.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question6.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question6.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question6.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question7.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question7.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question7.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question8.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question8.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question8.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question9.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question9.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question9.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question10.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question10.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question10.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question11.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question11.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question11.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question12.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question12.answers }}</b>
+  </p>
+  <label for=""
+    ><i>Sólo aquellos que contestaron SÍ a la pregunta 7.a</i></label
+  >
+
+  <div
+    class="demo-checkbox"
+    *ngFor="let opc of question12.options; let j = index"
+  >
+    <input
+      [disabled]="disabled7b"
+      (change)="radioChange($event, opc.q_id)"
+      type="checkbox"
+      value="{{ opc.o_id }}"
+      id="{{ opc.o_id }}"
+      [checked]="checked7b"
+      class="filled-in chk-col-blue"
+    />
+    <label class="tamlabel" for="{{ opc.o_id }}"
+      >{{ opc.o_description }}
+      <input
+        *ngIf="opc.q_id == 12 && opc.o_id == 47"
+        type="text"
+        #coment
+        [disabled]="opc.o_active"
+        [(ngModel)]="opc.coment"
+        (blur)="blurComent(coment.value, opc.q_id, opc.o_id)"
+        class="form-control col-md-12"
+        placeholder="Descripción"
+      />
+    </label>
+  </div>
+
+  <!-- <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question12.options; let j = index"
+    >
+      <input
+        [disabled]="disabled7b"
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div> -->
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question13.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question13.answers }}</b>
+  </p>
+  <label for=""
+    ><i>Sólo aquellos que contestaron SÍ a la pregunta 7.a</i></label
+  >
+  <div
+    class="demo-checkbox"
+    *ngFor="let opc of question13.options; let j = index"
+  >
+    <input
+      [disabled]="disabled7c"
+      (change)="radioChange($event, opc.q_id)"
+      type="checkbox"
+      value="{{ opc.o_id }}"
+      id="{{ opc.o_id }}"
+
+      class="filled-in chk-col-blue 7c"
+    />
+    <label class="tamlabel" for="{{ opc.o_id }}"
+      >{{ opc.o_description }}
+    </label>
+  </div>
+  <!-- <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question13.options; let j = index"
+    >
+      <input
+        [disabled]="disabled7c"
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input 7c"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div> -->
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question14.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question14.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question14.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question15.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question15.answers }}</b>
+  </p>
+  <label for=""
+    ><i>Sólo aquellos que contestaron SÍ a la pregunta 8.a</i></label
+  >
+  <div
+    class="demo-checkbox"
+    *ngFor="let opc of question15.options; let j = index"
+  >
+    <input
+      [disabled]="disabled8b"
+      (change)="radioChange($event, opc.q_id)"
+      type="checkbox"
+      value="{{ opc.o_id }}"
+      id="{{ opc.o_id }}"
+      class="filled-in chk-col-blue 8b"
+    />
+    <label class="tamlabel" for="{{ opc.o_id }}"
+      >{{ opc.o_description }}
+      <input
+        *ngIf="opc.q_id == 15 && opc.o_id == 63"
+        type="text"
+        #coment
+        [disabled]="opc.o_active"
+        [(ngModel)]="opc.coment"
+        (blur)="blurComent(coment.value, opc.q_id, opc.o_id)"
+        class="form-control col-md-12"
+        placeholder="Descripción"
+      />
+    </label>
+  </div>
+  <!-- <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question15.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div> -->
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question16.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question16.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question16.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question17.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question17.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question17.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question18.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question18.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question18.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question19.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question19.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question19.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question20.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question20.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question20.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question21.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question21.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question21.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question22.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question22.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question22.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question23.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question23.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question23.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question24.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question24.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question24.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question25.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question25.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question25.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question26.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question26.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question26.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question27.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question27.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question27.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question28.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question28.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question28.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question29.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question29.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question29.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question30.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question30.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question30.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon ribbon-bookmark  ribbon-danger">
+    {{ question31.nro }}
+  </div>
+  <p class="ribbon-content">
+    <b> {{ question31.answers }}</b>
+  </p>
+  <div class="form-check">
+    <label
+      class="custom-control custom-radio"
+      *ngFor="let opc of question31.options; let j = index"
+    >
+      <input
+        value="{{ opc.o_id }}"
+        name="{{ opc.q_id }}"
+        (change)="radioChange($event, opc.q_id)"
+        type="radio"
+        class="custom-control-input"
+      />
+      <span class="custom-control-indicator"></span>
+      <span class="custom-control-description">{{ opc.o_description }}</span>
+    </label>
+  </div>
+</div>
+<div class="ribbon-wrapper card">
+    <div class="ribbon ribbon-bookmark  ribbon-danger">
+      {{ question32.nro }}
+    </div>
+    <p class="ribbon-content">
+      <b> {{ question32.answers }}</b>
+    </p>
+    <div class="form-check">
+      <label
+        class="custom-control custom-radio"
+        *ngFor="let opc of question32.options; let j = index"
+      >
+        <input
+          value="{{ opc.o_id }}"
+          name="{{ opc.q_id }}"
+          (change)="radioChange($event, opc.q_id)"
+          type="radio"
+          class="custom-control-input"
+        />
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">{{ opc.o_description }}</span>
+      </label>
+    </div>
+  </div>
+  <div class="ribbon-wrapper card">
+      <div class="ribbon ribbon-bookmark  ribbon-danger">
+        {{ question33.nro }}
+      </div>
+      <p class="ribbon-content">
+        <b> {{ question33.answers }}</b>
+      </p>
+      <div class="form-check">
+        <label
+          class="custom-control custom-radio"
+          *ngFor="let opc of question33.options; let j = index"
+        >
+          <input
+            value="{{ opc.o_id }}"
+            name="{{ opc.q_id }}"
+            (change)="radioChange($event, opc.q_id)"
+            type="radio"
+            class="custom-control-input"
+          />
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">{{ opc.o_description }}</span>
+        </label>
+      </div>
+    </div>
+<div class="ribbon-wrapper card">
+    <div class="ribbon ribbon-bookmark  ribbon-danger">
+      {{ question34.nro }}
+    </div>
+    <p class="ribbon-content">
+      <b> {{ question34.answers }}</b>
+    </p>
+    <label for=""
+      ><i>Sólo aquellos que contestaron SÍ a la pregunta 11.a</i></label
+    >
+    <div class="form-check">
+      <label
+        class="custom-control custom-radio"
+        *ngFor="let opc of question34.options; let j = index"
+      >
+        <input
+           [disabled]="disabled11c"
+          value="{{ opc.o_id }}"
+          name="{{ opc.q_id }}"
+          (change)="radioChange($event, opc.q_id)"
+          type="radio"
+          class="custom-control-input 11c"
+        />
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">{{ opc.o_description }}</span>
+      </label>
+    </div>
+  </div>
+  <div class="ribbon-wrapper card">
+      <div class="ribbon ribbon-bookmark  ribbon-danger">
+        {{ question35.nro }}
+      </div>
+      <p class="ribbon-content">
+        <b> {{ question35.answers }}</b>
+      </p>
+      <div class="form-check">
+        <label
+          class="custom-control custom-radio"
+          *ngFor="let opc of question35.options; let j = index"
+        >
+          <input
+            value="{{ opc.o_id }}"
+            name="{{ opc.q_id }}"
+            (change)="radioChange($event, opc.q_id)"
+            type="radio"
+            class="custom-control-input"
+          />
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">{{ opc.o_description }}</span>
+        </label>
+      </div>
+    </div>
+    <div class="ribbon-wrapper card">
+        <div class="ribbon ribbon-bookmark  ribbon-danger">
+          {{ question36.nro }}
+        </div>
+        <p class="ribbon-content">
+          <b> {{ question36.answers }}</b>
+        </p>
+        <div class="form-check">
+          <label
+            class="custom-control custom-radio"
+            *ngFor="let opc of question36.options; let j = index"
+          >
+            <input
+              value="{{ opc.o_id }}"
+              name="{{ opc.q_id }}"
+              (change)="radioChange($event, opc.q_id)"
+              type="radio"
+              class="custom-control-input"
+            />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">{{ opc.o_description }}</span>
+          </label>
+        </div>
+      </div>
+      <div class="ribbon-wrapper card">
+          <div class="ribbon ribbon-bookmark  ribbon-danger">
+            {{ question37.nro }}
+          </div>
+          <p class="ribbon-content">
+            <b> {{ question37.answers }}</b>
+          </p>
+          <div class="form-check">
+            <label
+              class="custom-control custom-radio"
+              *ngFor="let opc of question37.options; let j = index"
+            >
+              <input
+                value="{{ opc.o_id }}"
+                name="{{ opc.q_id }}"
+                (change)="radioChange($event, opc.q_id)"
+                type="radio"
+                class="custom-control-input"
+              />
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">{{ opc.o_description }}</span>
+            </label>
+          </div>
+        </div>
+        <div class="ribbon-wrapper card">
+          <div class="ribbon ribbon-bookmark  ribbon-danger">
+            {{ question38.nro }}
+          </div>
+          <p class="ribbon-content">
+            <b> {{ question38.answers }}</b>
+          </p>
+          <div class="form-check">
+            <label
+              class="custom-control custom-radio"
+              *ngFor="let opc of question38.options; let j = index"
+            >
+              <input
+                value="{{ opc.o_id }}"
+                name="{{ opc.q_id }}"
+                (change)="radioChange($event, opc.q_id)"
+                type="radio"
+                class="custom-control-input"
+              />
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">{{ opc.o_description }}</span>
+            </label>
+          </div>
+        </div>
+        <div class="ribbon-wrapper card">
+          <div class="ribbon ribbon-bookmark  ribbon-danger">
+            {{ question39.nro }}
+          </div>
+          <p class="ribbon-content">
+            <b> {{ question39.answers }}</b>
+          </p>
+          <div class="form-check">
+            <label
+              class="custom-control custom-radio"
+              *ngFor="let opc of question39.options; let j = index"
+            >
+              <input
+                value="{{ opc.o_id }}"
+                name="{{ opc.q_id }}"
+                (change)="radioChange($event, opc.q_id)"
+                type="radio"
+                class="custom-control-input"
+              />
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">{{ opc.o_description }}</span>
+            </label>
+          </div>
+        </div>
+        <div class="ribbon-wrapper card">
+            <div class="ribbon ribbon-bookmark  ribbon-danger">
+              {{ question40.nro }}
+            </div>
+            <p class="ribbon-content">
+              <b> {{ question40.answers }}</b>
+            </p>
+            <div class="form-check">
+              <label
+                class="custom-control custom-radio"
+                *ngFor="let opc of question40.options; let j = index"
+              >
+                <input
+                  value="{{ opc.o_id }}"
+                  name="{{ opc.q_id }}"
+                  (change)="radioChange($event, opc.q_id)"
+                  type="radio"
+                  class="custom-control-input"
+                />
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">{{ opc.o_description }}</span>
+              </label>
+            </div>
+          </div>
+          <div class="ribbon-wrapper card">
+              <div class="ribbon ribbon-bookmark  ribbon-danger">
+                {{ question41.nro }}
+              </div>
+              <p class="ribbon-content">
+                <b> {{ question41.answers }}</b>
+              </p>
+              <div class="form-check">
+                <label
+                  class="custom-control custom-radio"
+                  *ngFor="let opc of question41.options; let j = index"
+                >
+                  <input
+                    value="{{ opc.o_id }}"
+                    name="{{ opc.q_id }}"
+                    (change)="radioChange($event, opc.q_id)"
+                    type="radio"
+                    class="custom-control-input"
+                  />
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description">{{ opc.o_description }}</span>
+                </label>
+              </div>
+            </div>
+            <div class="ribbon-wrapper card">
+                <div class="ribbon ribbon-bookmark  ribbon-danger">
+                  {{ question42.nro }}
+                </div>
+                <p class="ribbon-content">
+                  <b> {{ question42.answers }}</b>
+                </p>
+                <div class="form-check">
+                  <label
+                    class="custom-control custom-radio"
+                    *ngFor="let opc of question42.options; let j = index"
+                  >
+                    <input
+                      value="{{ opc.o_id }}"
+                      name="{{ opc.q_id }}"
+                      (change)="radioChange($event, opc.q_id)"
+                      type="radio"
+                      class="custom-control-input"
+                    />
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{{ opc.o_description }}</span>
+                  </label>
+                </div>
+              </div>
+    <div class="ribbon-wrapper card">
+        <div class="ribbon ribbon-bookmark  ribbon-danger">
+          {{ question43.nro }}
+        </div>
+        <p class="ribbon-content">
+          <b> {{ question43.answers }}</b>
+        </p>
+        <div class="form-check">
+          <label
+            class="custom-control custom-radio"
+            *ngFor="let opc of question43.options; let j = index"
+          >
+            <input
+              value="{{ opc.o_id }}"
+              name="{{ opc.q_id }}"
+              (change)="radioChange($event, opc.q_id)"
+              type="radio"
+              class="custom-control-input"
+            />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">{{ opc.o_description }}</span>
+          </label>
+        </div>
+      </div>
+  
+      <div class="ribbon-wrapper card">
+          <div class="ribbon ribbon-bookmark  ribbon-danger">
+            {{ question44.nro }}
+          </div>
+          <p class="ribbon-content">
+            <b> {{ question44.answers }}</b>
+          </p>
+          <div class="form-check">
+            <label
+              class="custom-control custom-radio"
+              *ngFor="let opc of question44.options; let j = index"
+            >
+              <input
+                value="{{ opc.o_id }}"
+                name="{{ opc.q_id }}"
+                (change)="radioChange($event, opc.q_id)"
+                type="radio"
+                class="custom-control-input"
+              />
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">{{ opc.o_description }}</span>
+            </label>
+          </div>
+        </div>
+        <div class="ribbon-wrapper card">
+            <div class="ribbon ribbon-bookmark  ribbon-danger">
+              {{ question45.nro }}
+            </div>
+            <p class="ribbon-content">
+              <b> {{ question45.answers }}</b>
+            </p>
+            <div class="form-check">
+              <label
+                class="custom-control custom-radio"
+                *ngFor="let opc of question45.options; let j = index"
+              >
+                <input
+                  value="{{ opc.o_id }}"
+                  name="{{ opc.q_id }}"
+                  (change)="radioChange($event, opc.q_id)"
+                  type="radio"
+                  class="custom-control-input"
+                />
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">{{ opc.o_description }}</span>
+              </label>
+            </div>
+          </div>
+          <div class="ribbon-wrapper card">
+              <div class="ribbon ribbon-bookmark  ribbon-danger">
+                {{ question46.nro }}
+              </div>
+              <p class="ribbon-content">
+                <b> {{ question46.answers }}</b>
+              </p>
+              <div class="form-check">
+                <label
+                  class="custom-control custom-radio"
+                  *ngFor="let opc of question46.options; let j = index"
+                >
+                  <input
+                    value="{{ opc.o_id }}"
+                    name="{{ opc.q_id }}"
+                    (change)="radioChange($event, opc.q_id)"
+                    type="radio"
+                    class="custom-control-input"
+                  />
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description">{{ opc.o_description }}</span>
+                </label>
+              </div>
+            </div>
+            <div class="ribbon-wrapper card">
+                <div class="ribbon ribbon-bookmark  ribbon-danger">
+                  {{ question47.nro }}
+                </div>
+                <p class="ribbon-content">
+                  <b> {{ question47.answers }}</b>
+                </p>
+                <div class="form-check">
+                  <label
+                    class="custom-control custom-radio"
+                    *ngFor="let opc of question47.options; let j = index"
+                  >
+                    <input
+                      value="{{ opc.o_id }}"
+                      name="{{ opc.q_id }}"
+                      (change)="radioChange($event, opc.q_id)"
+                      type="radio"
+                      class="custom-control-input"
+                    />
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{{ opc.o_description }}</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="ribbon-wrapper card">
+                  <div class="ribbon ribbon-bookmark  ribbon-danger">
+                    {{ question48.nro }}
+                  </div>
+                  <p class="ribbon-content">
+                    <b> {{ question48.answers }}</b>
+                  </p>
+                  <div class="form-check">
+                    <label
+                      class="custom-control custom-radio"
+                      *ngFor="let opc of question48.options; let j = index"
+                    >
+                      <input
+                        value="{{ opc.o_id }}"
+                        name="{{ opc.q_id }}"
+                        (change)="radioChange($event, opc.q_id)"
+                        type="radio"
+                        class="custom-control-input"
+                      />
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description">{{ opc.o_description }}</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="ribbon-wrapper card">
+                    <div class="ribbon ribbon-bookmark  ribbon-danger">
+                      {{ question49.nro }}
+                    </div>
+                    <p class="ribbon-content">
+                      <b> {{ question49.answers }}</b>
+                    </p>
+                    <div class="form-check">
+                      <label
+                        class="custom-control custom-radio"
+                        *ngFor="let opc of question49.options; let j = index"
+                      >
+                        <input
+                          value="{{ opc.o_id }}"
+                          name="{{ opc.q_id }}"
+                          (change)="radioChange($event, opc.q_id)"
+                          type="radio"
+                          class="custom-control-input"
+                        />
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">{{ opc.o_description }}</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="ribbon-wrapper card">
+                      <div class="ribbon ribbon-bookmark  ribbon-danger">
+                        {{ question50.nro }}
+                      </div>
+                      <p class="ribbon-content">
+                        <b> {{ question50.answers }}</b>
+                      </p>
+                      <div class="form-check">
+                        <label
+                          class="custom-control custom-radio"
+                          *ngFor="let opc of question50.options; let j = index"
+                        >
+                          <input
+                            value="{{ opc.o_id }}"
+                            name="{{ opc.q_id }}"
+                            (change)="radioChange($event, opc.q_id)"
+                            type="radio"
+                            class="custom-control-input"
+                          />
+                          <span class="custom-control-indicator"></span>
+                          <span class="custom-control-description">{{ opc.o_description }}</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="ribbon-wrapper card">
+                        <div class="ribbon ribbon-bookmark  ribbon-danger">
+                          {{ question51.nro }}
+                        </div>
+                        <p class="ribbon-content">
+                          <b> {{ question51.answers }}</b>
+                        </p>
+                        <div class="form-check">
+                          <label
+                            class="custom-control custom-radio"
+                            *ngFor="let opc of question51.options; let j = index"
+                          >
+                            <input
+                              value="{{ opc.o_id }}"
+                              name="{{ opc.q_id }}"
+                              (change)="radioChange($event, opc.q_id)"
+                              type="radio"
+                              class="custom-control-input"
+                            />
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">{{ opc.o_description }}</span>
+                          </label>
+                        </div>
+                      </div>
+                      <div class="ribbon-wrapper card">
+                          <div class="ribbon ribbon-bookmark  ribbon-danger">
+                            {{ question52.nro }}
+                          </div>
+                          <p class="ribbon-content">
+                            <b> {{ question52.answers }}</b>
+                          </p>
+                          <div class="form-check">
+                            <label
+                              class="custom-control custom-radio"
+                              *ngFor="let opc of question52.options; let j = index"
+                            >
+                              <input
+                                value="{{ opc.o_id }}"
+                                name="{{ opc.q_id }}"
+                                (change)="radioChange($event, opc.q_id)"
+                                type="radio"
+                                class="custom-control-input"
+                              />
+                              <span class="custom-control-indicator"></span>
+                              <span class="custom-control-description">{{ opc.o_description }}</span>
+                            </label>
+                          </div>
+                        </div>
+<div class="ribbon-wrapper card">
+    <div class="ribbon ribbon-bookmark  ribbon-danger">
+      {{ question53.nro }}
+    </div>
+    <p class="ribbon-content">
+      <b> {{ question53.answers }}</b>
+    </p>
+    <div class="form-check">
+      <label
+        class="custom-control custom-radio"
+        *ngFor="let opc of question53.options; let j = index"
+      >
+        <input
+          value="{{ opc.o_id }}"
+          name="{{ opc.q_id }}"
+          (change)="radioChange($event, opc.q_id)"
+          type="radio"
+          class="custom-control-input"
+        />
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">{{ opc.o_description }}</span>
+      </label>
+    </div>
+  </div>
+  <div class="ribbon-wrapper card">
+      <div class="ribbon ribbon-bookmark  ribbon-danger">
+        {{ question54.nro }}
+      </div>
+      <p class="ribbon-content">
+        <b> {{ question54.answers }}</b>
+      </p>
+      <div class="form-check">
+        <label
+          class="custom-control custom-radio"
+          *ngFor="let opc of question54.options; let j = index"
+        >
+          <input
+            value="{{ opc.o_id }}"
+            name="{{ opc.q_id }}"
+            (change)="radioChange($event, opc.q_id)"
+            type="radio"
+            class="custom-control-input"
+          />
+          <span class="custom-control-indicator"></span>
+          <span class="custom-control-description">{{ opc.o_description }}</span>
+        </label>
+      </div>
+    </div>
+    <div class="ribbon-wrapper card">
+        <div class="ribbon ribbon-bookmark  ribbon-danger">
+          {{ question55.nro }}
+        </div>
+        <p class="ribbon-content">
+          <b> {{ question55.answers }}</b>
+        </p>
+        <div class="form-check">
+          <label
+            class="custom-control custom-radio"
+            *ngFor="let opc of question55.options; let j = index"
+          >
+            <input
+              value="{{ opc.o_id }}"
+              name="{{ opc.q_id }}"
+              (change)="radioChange($event, opc.q_id)"
+              type="radio"
+              class="custom-control-input"
+            />
+            <span class="custom-control-indicator"></span>
+            <span class="custom-control-description">{{ opc.o_description }}</span>
+          </label>
+        </div>
+      </div>
+      <div class="ribbon-wrapper card">
+          <div class="ribbon ribbon-bookmark  ribbon-danger">
+            {{ question56.nro }}
+          </div>
+          <p class="ribbon-content">
+            <b> {{ question56.answers }}</b>
+          </p>
+          <div class="form-check">
+            <label
+              class="custom-control custom-radio"
+              *ngFor="let opc of question56.options; let j = index"
+            >
+              <input
+                value="{{ opc.o_id }}"
+                name="{{ opc.q_id }}"
+                (change)="radioChange($event, opc.q_id)"
+                type="radio"
+                class="custom-control-input"
+              />
+              <span class="custom-control-indicator"></span>
+              <span class="custom-control-description">{{ opc.o_description }}</span>
+            </label>
+          </div>
+        </div>
+        <div class="ribbon-wrapper card">
+            <div class="ribbon ribbon-bookmark  ribbon-danger">
+              {{ question57.nro }}
+            </div>
+            <p class="ribbon-content">
+              <b> {{ question57.answers }}</b>
+            </p>
+            <div class="form-check">
+              <label
+                class="custom-control custom-radio"
+                *ngFor="let opc of question57.options; let j = index"
+              >
+                <input
+                  value="{{ opc.o_id }}"
+                  name="{{ opc.q_id }}"
+                  (change)="radioChange($event, opc.q_id)"
+                  type="radio"
+                  class="custom-control-input"
+                />
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">{{ opc.o_description }}</span>
+              </label>
+            </div>
+          </div>
+          <div class="ribbon-wrapper card">
+              <div class="ribbon ribbon-bookmark  ribbon-danger">
+                {{ question58.nro }}
+              </div>
+              <p class="ribbon-content">
+                <b> {{ question58.answers }}</b>
+              </p>
+              <div class="form-check">
+                <label
+                  class="custom-control custom-radio"
+                  *ngFor="let opc of question58.options; let j = index"
+                >
+                  <input
+                    value="{{ opc.o_id }}"
+                    name="{{ opc.q_id }}"
+                    (change)="radioChange($event, opc.q_id)"
+                    type="radio"
+                    class="custom-control-input"
+                  />
+                  <span class="custom-control-indicator"></span>
+                  <span class="custom-control-description">{{ opc.o_description }}</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="ribbon-wrapper card">
+                <div class="ribbon ribbon-bookmark  ribbon-danger">
+                  {{ question59.nro }}
+                </div>
+                <p class="ribbon-content">
+                  <b> {{ question59.answers }}</b>
+                </p>
+                <div class="form-check">
+                  <label
+                    class="custom-control custom-radio"
+                    *ngFor="let opc of question59.options; let j = index"
+                  >
+                    <input
+                      value="{{ opc.o_id }}"
+                      name="{{ opc.q_id }}"
+                      (change)="radioChange($event, opc.q_id)"
+                      type="radio"
+                      class="custom-control-input"
+                    />
+                    <span class="custom-control-indicator"></span>
+                    <span class="custom-control-description">{{ opc.o_description }}</span>
+                  </label>
+                </div>
+              </div>
+              <div class="ribbon-wrapper card">
+                  <div class="ribbon ribbon-bookmark  ribbon-danger">
+                    {{ question60.nro }}
+                  </div>
+                  <p class="ribbon-content">
+                    <b> {{ question60.answers }}</b>
+                  </p>
+                  
+                  <div
+                  class="demo-checkbox"
+                  *ngFor="let opc of question60.options; let j = index"
+                >
+                  <input
+                    (change)="radioChange($event, opc.q_id)"
+                    type="checkbox"
+                    value="{{ opc.o_id }}"
+                    id="{{ opc.o_id }}"
+                    class="filled-in chk-col-blue"
+                  />
+                  <label class="tamlabel" for="{{ opc.o_id }}"
+                    >{{ opc.o_description }}
+                  </label>
+                </div>
+
+
+
+                  <!-- <div class="form-check">
+                    <label
+                      class="custom-control custom-radio"
+                      *ngFor="let opc of question57.options; let j = index"
+                    >
+                      <input
+                        value="{{ opc.o_id }}"
+                        name="{{ opc.q_id }}"
+                        (change)="radioChange($event, opc.q_id)"
+                        type="radio"
+                        class="custom-control-input"
+                      />
+                      <span class="custom-control-indicator"></span>
+                      <span class="custom-control-description">{{ opc.o_description }}</span>
+                    </label>
+                  </div> -->
+                </div>
+                <div class="ribbon-wrapper card">
+                    <div class="ribbon ribbon-bookmark  ribbon-danger">
+                      {{ question61.nro }}
+                    </div>
+                    <p class="ribbon-content">
+                      <b> {{ question61.answers }}</b>
+                    </p>
+
+                    <div
+                  class="demo-checkbox"
+                  *ngFor="let opc of question61.options; let j = index"
+                >
+                  <input
+                    (change)="radioChange($event, opc.q_id)"
+                    type="checkbox"
+                    value="{{ opc.o_id }}"
+                    id="{{ opc.o_id }}"
+                    class="filled-in chk-col-blue"
+                  />
+                  <label class="tamlabel" for="{{ opc.o_id }}"
+                    >{{ opc.o_description }}
+                  </label>
+                </div>
+                    <!-- <div class="form-check">
+                      <label
+                        class="custom-control custom-radio"
+                        *ngFor="let opc of question58.options; let j = index"
+                      >
+                        <input
+                          value="{{ opc.o_id }}"
+                          name="{{ opc.q_id }}"
+                          (change)="radioChange($event, opc.q_id)"
+                          type="radio"
+                          class="custom-control-input"
+                        />
+                        <span class="custom-control-indicator"></span>
+                        <span class="custom-control-description">{{ opc.o_description }}</span>
+                      </label>
+                    </div> -->
+                  </div>
+                  <div class="ribbon-wrapper card">
+                      <div class="ribbon ribbon-bookmark  ribbon-danger">
+                        {{ question62.nro }}
+                      </div>
+                      <p class="ribbon-content">
+                        <b> {{ question62.answers }}</b>
+                      </p>
+                      <div class="form-check">
+                        <label
+                          class="custom-control custom-radio"
+                          *ngFor="let opc of question62.options; let j = index"
+                        >
+                          <input
+                            value="{{ opc.o_id }}"
+                            name="{{ opc.q_id }}"
+                            (change)="radioChange($event, opc.q_id)"
+                            type="radio"
+                            class="custom-control-input"
+                          />
+                          <span class="custom-control-indicator"></span>
+                          <span class="custom-control-description">{{ opc.o_description }}</span>
+                        </label>
+                      </div>
+                    </div>
+                    <div class="ribbon-wrapper card">
+                        <div class="ribbon ribbon-bookmark  ribbon-danger">
+                          {{ question63.nro }}
+                        </div>
+                        <p class="ribbon-content">
+                          <b> {{ question63.answers }}</b>
+                        </p>
+                        <div class="form-check">
+                          <label
+                            class="custom-control custom-radio"
+                            *ngFor="let opc of question63.options; let j = index"
+                          >
+                            <input
+                              value="{{ opc.o_id }}"
+                              name="{{ opc.q_id }}"
+                              (change)="radioChange($event, opc.q_id)"
+                              type="radio"
+                              class="custom-control-input"
+                            />
+                            <span class="custom-control-indicator"></span>
+                            <span class="custom-control-description">{{ opc.o_description }}</span>
+                          </label>
+                        </div>
+                      </div>
+
+                      <div class="ribbon-wrapper card">
+                          <div class="ribbon ribbon-bookmark  ribbon-danger">
+                            {{ question64.nro }}
+                          </div>
+                          <p class="ribbon-content">
+                            <b> {{ question64.answers }}</b>
+                          </p>
+                          <div class="form-check">
+                            <label
+                              class="custom-control custom-radio"
+                              *ngFor="let opc of question64.options; let j = index"
+                            >
+                              <input
+                                value="{{ opc.o_id }}"
+                                name="{{ opc.q_id }}"
+                                (change)="radioChange($event, opc.q_id)"
+                                type="radio"
+                                class="custom-control-input"
+                              />
+                              <span class="custom-control-indicator"></span>
+                              <span class="custom-control-description">{{ opc.o_description }}</span>
+                            </label>
+                          </div>
+                        </div>
+                        <div class="ribbon-wrapper card">
+                            <div class="ribbon ribbon-bookmark  ribbon-danger">
+                              {{ question65.nro }}
+                            </div>
+                            <p class="ribbon-content">
+                              <b> {{ question65.answers }}</b>
+                            </p>
+                            <div class="form-check">
+                              <label
+                                class="custom-control custom-radio"
+                                *ngFor="let opc of question65.options; let j = index"
+                              >
+                                <input
+                                  value="{{ opc.o_id }}"
+                                  name="{{ opc.q_id }}"
+                                  (change)="radioChange($event, opc.q_id)"
+                                  type="radio"
+                                  class="custom-control-input"
+                                />
+                                <span class="custom-control-indicator"></span>
+                                <span class="custom-control-description">{{ opc.o_description }}</span>
+                              </label>
+                            </div>
+                          </div>
+                          <div class="ribbon-wrapper card">
+                              <div class="ribbon ribbon-bookmark  ribbon-danger">
+                                {{ question66.nro }}
+                              </div>
+                              <p class="ribbon-content">
+                                <b> {{ question66.answers }}</b>
+                              </p>
+                              <label for=""
+                                ><i>Sólo aquellos que respondieron "Sí" o "A veces" en la pregunta 25.4</i></label
+                              >
+
+                              <div
+                              class="demo-checkbox"
+                              *ngFor="let opc of question66.options; let j = index"
+                            >
+                              <input
+                                [disabled]="disabled25a"
+                                (change)="radioChange($event, opc.q_id)"
+                                type="checkbox"
+                                value="{{ opc.o_id }}"
+                                id="{{ opc.o_id }}"
+                                class="filled-in chk-col-blue 25a"
+                              />
+                              <label class="tamlabel" for="{{ opc.o_id }}"
+                                >{{ opc.o_description }}
+                                <input
+                                  *ngIf="opc.q_id == 66 && opc.o_id == 284"
+                                  type="text"
+                                  #coment
+                                  [disabled]="opc.o_active"
+                                  [(ngModel)]="opc.coment"
+                                  (blur)="blurComent(coment.value, opc.q_id, opc.o_id)"
+                                  class="form-control col-md-12"
+                                  placeholder="Descripción"
+                                />
+                              </label>
+                            </div>
+                              <!-- <div class="form-check">
+                                <label
+                                  class="custom-control custom-radio"
+                                  *ngFor="let opc of question63.options; let j = index"
+                                >
+                                  <input
+                                    value="{{ opc.o_id }}"
+                                    name="{{ opc.q_id }}"
+                                    (change)="radioChange($event, opc.q_id)"
+                                    type="radio"
+                                    class="custom-control-input"
+                                  />
+                                  <span class="custom-control-indicator"></span>
+                                  <span class="custom-control-description">{{ opc.o_description }}</span>
+                                </label>
+                              </div> -->
+                            </div>
+                            <div class="ribbon-wrapper card">
+                                <div class="ribbon ribbon-bookmark  ribbon-danger">
+                                  {{ question67.nro }}
+                                </div>
+                                <p class="ribbon-content">
+                                  <b> {{ question67.answers }}</b>
+                                </p>
+                                <div
+                                class="demo-checkbox"
+                                *ngFor="let opc of question67.options; let j = index"
+                              >
+                                <input
+                                  (change)="radioChange($event, opc.q_id)"
+                                  type="checkbox"
+                                  value="{{ opc.o_id }}"
+                                  id="{{ opc.o_id }}"
+                                  class="filled-in chk-col-blue"
+                                />
+                                <label class="tamlabel" for="{{ opc.o_id }}"
+                                  >{{ opc.o_description }}
+                                </label>
+                              </div>
+                                <!-- <div class="form-check">
+                                  <label
+                                    class="custom-control custom-radio"
+                                    *ngFor="let opc of question64.options; let j = index"
+                                  >
+                                    <input
+                                      value="{{ opc.o_id }}"
+                                      name="{{ opc.q_id }}"
+                                      (change)="radioChange($event, opc.q_id)"
+                                      type="radio"
+                                      class="custom-control-input"
+                                    />
+                                    <span class="custom-control-indicator"></span>
+                                    <span class="custom-control-description">{{ opc.o_description }}</span>
+                                  </label>
+                                </div> -->
+                              </div>
+                              <div class="ribbon-wrapper card">
+                                  <div class="ribbon ribbon-bookmark  ribbon-danger">
+                                    {{ question68.nro }}
+                                  </div>
+                                  <p class="ribbon-content">
+                                    <b> {{ question68.answers }}</b>
+                                  </p>
+                                  <div class="form-check">
+                                    <label
+                                      class="custom-control custom-radio"
+                                      *ngFor="let opc of question68.options; let j = index"
+                                    >
+                                      <input
+                                        value="{{ opc.o_id }}"
+                                        name="{{ opc.q_id }}"
+                                        (change)="radioChange($event, opc.q_id)"
+                                        type="radio"
+                                        class="custom-control-input"
+                                      />
+                                      <span class="custom-control-indicator"></span>
+                                      <span class="custom-control-description">{{ opc.o_description }}</span>
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="ribbon-wrapper card">
+                                  <div class="ribbon ribbon-bookmark  ribbon-danger">
+                                    {{ question69.nro }}
+                                  </div>
+                                  <p class="ribbon-content">
+                                    <b> {{ question69.answers }}</b>
+                                  </p>
+                                  <div class="form-check">
+                                    <label
+                                      class="custom-control custom-radio"
+                                      *ngFor="let opc of question69.options; let j = index"
+                                    >
+                                      <input
+                                        value="{{ opc.o_id }}"
+                                        name="{{ opc.q_id }}"
+                                        (change)="radioChange($event, opc.q_id)"
+                                        type="radio"
+                                        class="custom-control-input"
+                                      />
+                                      <span class="custom-control-indicator"></span>
+                                      <span class="custom-control-description">{{ opc.o_description }}</span>
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="ribbon-wrapper card">
+                                  <div class="ribbon ribbon-bookmark  ribbon-danger">
+                                    {{ question70.nro }}
+                                  </div>
+                                  <p class="ribbon-content">
+                                    <b> {{ question70.answers }}</b>
+                                  </p>
+                                  <div class="form-check">
+                                    <label
+                                      class="custom-control custom-radio"
+                                      *ngFor="let opc of question70.options; let j = index"
+                                    >
+                                      <input
+                                        value="{{ opc.o_id }}"
+                                        name="{{ opc.q_id }}"
+                                        (change)="radioChange($event, opc.q_id)"
+                                        type="radio"
+                                        class="custom-control-input"
+                                      />
+                                      <span class="custom-control-indicator"></span>
+                                      <span class="custom-control-description">{{ opc.o_description }}</span>
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="ribbon-wrapper card">
+                                    <div class="ribbon ribbon-bookmark  ribbon-danger">
+                                      {{ question71.nro }}
+                                    </div>
+                                    <p class="ribbon-content">
+                                      <b> {{ question71.answers }}</b>
+                                    </p>
+                                    <div class="form-check">
+                                      <label
+                                        class="custom-control custom-radio"
+                                        *ngFor="let opc of question71.options; let j = index"
+                                      >
+                                        <input
+                                          value="{{ opc.o_id }}"
+                                          name="{{ opc.q_id }}"
+                                          (change)="radioChange($event, opc.q_id)"
+                                          type="radio"
+                                          class="custom-control-input"
+                                        />
+                                        <span class="custom-control-indicator"></span>
+                                        <span class="custom-control-description">{{ opc.o_description }}</span>
+                                      </label>
+                                    </div>
+                                  </div>
+  </div>
+<div
+  *ngIf="isLoading"
+  style="display: flex; justify-content: center; align-items: center"
+>
+  <mat-progress-spinner diameter="30" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+  Guardando encuesta...
+</div>
+<button
+  type="button"
+  *ngIf="surveyhability"
+  (click)="save()"
+  [disabled]="diabaledButtonSave"
+  class="btn btn-rounded btn-block btn-info"
+>
+  <i class="fa fa-check"></i> Enviar encuesta
+</button>

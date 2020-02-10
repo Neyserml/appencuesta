@@ -12,4 +12,10 @@ export class AnswersService {
   public getAnswers(): Observable<any> {
     return this.http.get(`${this.domain}` + "/answers.php");
   }
+  public saveSurvey(data): Observable<any> {
+    return this.http.post(`${this.domain}` + "/savesurvey.php", data);
+  }
+  public getDepartaments(): Observable<any> {
+    return this.http.get(`${this.domain}` + "/departaments.php");
+  }
 }

@@ -1,44 +1,120 @@
 <div class="card">
   <div class="card-body">
-    <h4 class="card-title">Card title</h4>
-    <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+    <h4 class="card-title">ENCUESTA DE YOUNG VOICE</h4>
+    <h6 class="card-subtitle mb-2 text-muted">
+      <b>
+        Esta encuesta tiene como objetivo conocer las percepciones de
+        adolescentes de 12 a 17 años de diferentes realidades de El Salvador
+        sobre el ejercicio de sus derechos, a fin de tomar en cuenta sus aportes
+        en las políticas públicas, en todos los niveles de gobierno.
+      </b>
+    </h6>
     <p class="card-text"></p>
   </div>
 </div>
-<div class="ribbon-wrapper card" *ngFor="let obj of data">
-  <div class="ribbon ribbon-bookmark  ribbon-default">
-    Pregunta N° {{ obj.idanswers }}
+<div *ngIf="messageAlert" class="alert alert-warning" role="alert">
+  <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Para empezar la
+  ecuesta,Ud. debe seleccionar el departamento.
+</div>
+<div class="ribbon-wrapper card">
+  <div class="ribbon  ribbon-info">
+    Región
   </div>
-  <p class="ribbon-content">
-    {{ obj.answers }}
-  </p>
-  <form action="" [formGroup]="documentForm">
-    <mat-radio-group
-      name="{{ opc.q_id }}"
-      formControlName="a_opcion"
-      (ngModelChange)="getOpcion(opc.o_id, opc.q_id)"
-      *ngFor="let opc of obj.options"
+  <mat-form-field class="card-input">
+    <mat-select
+      placeholder="Seleccione departamento"
+      required
+      (selectionChange)="deparChange($event.value)"
     >
-      <mat-radio-button class="radio_b" value="{{ opc.o_id }}">{{
-        opc.o_description
-      }}</mat-radio-button
-      ><br />
-    </mat-radio-group>
-  </form>
-  <!-- <div class="form-check" *ngFor="let opc of obj.options">
-    <label class="custom-control custom-radio">
+      <mat-optgroup *ngFor="let obj of arraydepa" [label]="obj.region">
+        <mat-option *ngFor="let rol of obj.departaments" [value]="rol.d_id">{{
+          rol.d_description
+        }}</mat-option>
+      </mat-optgroup>
+    </mat-select>
+  </mat-form-field>
+</div>
+<div *ngIf="surveyhability">
+  <div class="ribbon-wrapper card" *ngFor="let obj of data; let i = index">
+    <div class="ribbon ribbon-bookmark  ribbon-danger">
+      {{ obj.nro }}
+    </div>
+    <p class="ribbon-content">
+      <b>{{ obj.answers }}</b>
+    </p>
+    <!-- <mat-radio-group
+    disabled="{{ obj.disabled }}"
+    name="{{ opc.q_id }}"
+    (change)="radioChange($event, opc.q_id, i, j)"
+    *ngFor="let opc of obj.options; let j = index"
+  >
+    <mat-radio-button
+      class="radio_b"
+      [checked]="obj.checked"
+      value="{{ opc.o_id }}"
+    >
+      {{ opc.o_description }}
       <input
-        name="{{ opc.q_id }}"
-        [value]="opc.o_id"
-        type="radio"
-        class="custom-control-input"
+        *ngIf="
+          (opc.q_id == 13 && opc.o_id == 59) ||
+          (opc.q_id == 16 && opc.o_id == 74)
+        "
+        type="text"
+        #coment
+        [disabled]="opc.o_active"
+        [(ngModel)]="opc.coment"
+        (blur)="blurComent(coment.value, opc.q_id, opc.o_id)"
+        class="form-control col-md-3"
+        placeholder="Descripción"
       />
-      <span class="custom-control-indicator"></span>
-      <span class="custom-control-description">{{ opc.o_description }}</span>
-    </label>
-  </div> -->
+    </mat-radio-button>
+    <br />
+  </mat-radio-group> -->
+
+    <div class="form-check">
+      <label
+        class="custom-control custom-radio"
+        *ngFor="let opc of obj.options; let j = index"
+      >
+        <input
+          [disabled]="obj.disabled"
+          name="{{ opc.q_id }}"
+          value="{{ opc.o_id }}"
+          (change)="radioChange($event, opc.q_id, i, j)"
+          type="radio"
+          class="custom-control-input"
+        />
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">{{ opc.o_description }}</span>
+        <input
+          *ngIf="
+            (opc.q_id == 12 && opc.o_id == 45) ||
+            (opc.q_id == 15 && opc.o_id == 60) ||
+            (opc.q_id == 63 && opc.o_id == 265)
+          "
+          type="text"
+          #coment
+          [disabled]="opc.o_active"
+          [(ngModel)]="opc.coment"
+          (blur)="blurComent(coment.value, opc.q_id, opc.o_id)"
+          class="form-control col-md-3"
+          placeholder="Descripción"
+        />
+      </label>
+    </div>
+  </div>
+</div>
+
+<div
+  *ngIf="isLoading"
+  style="display: flex; justify-content: center; align-items: center"
+>
+  <mat-progress-spinner diameter="30" color="primary" mode="indeterminate">
+  </mat-progress-spinner>
+  Guardando encuesta...
 </div>
 <button
+  *ngIf="surveyhability"
   type="button"
   (click)="save()"
   class="btn btn-rounded btn-block btn-info"

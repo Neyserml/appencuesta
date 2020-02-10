@@ -1,4 +1,11 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  AfterViewInit,
+  ViewChildren
+} from "@angular/core";
+import { HomeComponent } from "./home/home.component";
 declare function init_plugins();
 @Component({
   selector: "app-pages",

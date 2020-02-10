@@ -2,6 +2,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { PagesComponent } from "./pages.component";
 import { HomeComponent } from "./home/home.component";
 import { GuardService } from "../core/guard.guard";
+import { SurveyComponent } from "./survey/survey.component";
 
 const pagesRoutes: Routes = [
   {
@@ -9,8 +10,8 @@ const pagesRoutes: Routes = [
     component: PagesComponent,
     children: [
       {
-        path: "encuesta",
-        component: HomeComponent,
+        path: "survey",
+        component: SurveyComponent,
         canActivate: [GuardService]
       },
       { path: "", redirectTo: "/login", pathMatch: "full" }

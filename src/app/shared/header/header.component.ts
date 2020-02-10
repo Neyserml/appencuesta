@@ -1,6 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild, AfterViewInit } from "@angular/core";
 import { Router } from "@angular/router";
 import { Login } from "../../models/login";
+import { HomeComponent } from "src/app/pages/home/home.component";
+import { DataService } from "src/app/core/data.service";
 @Component({
   selector: "app-header",
   templateUrl: "./header.component.html",
@@ -10,7 +12,8 @@ export class HeaderComponent implements OnInit {
   userLogged: Login;
   nombres = "";
   dni = "";
-  constructor(private router: Router) {
+
+  constructor(private router: Router, public dataService: DataService) {
     this.userLogged = JSON.parse(localStorage.getItem("userLogged")) as Login;
     this.nombres =
       this.userLogged.nombres.toString() +
